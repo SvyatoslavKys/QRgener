@@ -6,14 +6,10 @@ import { ScanHistory } from "./ScanHistory";
 import { GenerateHistory } from "./generHistory";
 
 
-
-
-
 const Layout = () => {
     return(
     <div>
         <Navigation/>
-        
         <Routes>
             <Route path="/generate" element={<QrCodeGener/>} />
             <Route path="/scan" element={<QrCodeScan/>} />

@@ -6,9 +6,6 @@ import { Layout } from './layout';
 
 
 
-
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Layout/>
