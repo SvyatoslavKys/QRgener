@@ -24,14 +24,14 @@ export const QrCodeScan = () => {
         container: { width: 360, }
     };
     return(
-        <div>
+        <div className="flex flex-col justify-center items-center">
             <Scanner 
             allowMultiple={false} 
             onScan={scanHandler}
             components={settings}
             styles={stylesSettings}
             />
-            <input type="text" value={scanResult} readOnly />
+            <a target="_blank" href={scanResult}><input className='mt-2 w-300 bg-gray-200 p-2 border-red-400' type="text" value={scanResult} readOnly /></a>
         </div>
     );
 };

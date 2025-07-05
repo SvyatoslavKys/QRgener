@@ -22,10 +22,13 @@ const QrCodeGener = () => {
     };
     console.log( 'result:',result)
     return(
-        <div>
-            {result !== '' && (<QRCodeSVG value={result} size={200} />) }
-            <input placeholder='your text' type="text" value={value} onChange={onChangeHandler} />
-            <button type='button' onClick={onClickHandler}>Gener QR</button>
+        <div className="relativ flex flex-col justify-center items-center">
+            <div className='mt-5'>{result !== '' && (<QRCodeSVG value={result} size={200} />) }</div>
+           <div className='flex gap-4 absolute top-[300px]'> 
+           <input className='bg-gray-200 p-2 border-red-500' placeholder='your text' type="text" value={value} onChange={onChangeHandler} />
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-md border border-blue-600 hover:bg-blue-600 hover:border-blue-700 transition-colors duration-300"
+                     type='button' onClick={onClickHandler}>Gener QR</button>
+            </div>
         </div>
     );
 };
