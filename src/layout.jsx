@@ -3,7 +3,8 @@ import { Navigation } from './Navigation';
 import { QrCodeGener } from "./QrCodeGener";
 import { QrCodeScan } from "./QrCodescanner";
 import { ScanHistory } from "./ScanHistory";
-import { GenerateHistory } from "./generHistory";
+import { GenerateHistory } from "./GenerateHistory";
+
 
 
 const Layout = () => {
