@@ -2,20 +2,21 @@ import { Link } from "react-router-dom";
 import { GENERATE_DATE, SCAN_DATA } from "./constants";
 import { Icon } from "./Icon";
 import { readHistory } from "./historyStorage";
+import { t } from "./i18n";
 
-const actionCards = [
+const _actionCards = [
   {
     to: "/scan",
     icon: "scan",
-    title: "Scan a QR code",
-    text: "Point your camera at any QR code and get the result instantly.",
+    titleKey: "home.scanCardTitle",
+    textKey: "home.scanCardText",
     accent: "bg-cyan-50 text-cyan-700 group-hover:bg-cyan-100",
   },
   {
     to: "/generate",
     icon: "qr",
-    title: "Create a QR code",
-    text: "Turn a link, message, or any text into a shareable QR code.",
+    titleKey: "home.createCardTitle",
+    textKey: "home.createCardText",
     accent: "bg-indigo-50 text-indigo-700 group-hover:bg-indigo-100",
   },
 ];
@@ -34,24 +35,24 @@ export const Home = () => {
         <div className="relative z-10">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-indigo-100">
             <Icon name="sparkles" className="h-4 w-4" />
-            Simple QR toolkit
+            {t("home.badge")}
           </span>
           <h1 className="mt-6 max-w-2xl text-4xl font-black leading-[1.05] tracking-[-0.04em] sm:text-5xl lg:text-6xl">
-            Scan. Create.
+            {t("home.title")}
             <span className="block bg-gradient-to-r from-indigo-300 to-cyan-300 bg-clip-text text-transparent">
-              Share instantly.
+              {t("home.titleAccent")}
             </span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-            Everything you need to work with QR codes in one clean, private, and easy-to-use space.
+            {t("home.description")}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link to="/scan" className="primary-button bg-white text-slate-950 shadow-white/10 hover:bg-indigo-50">
               <Icon name="scan" />
-              Start scanning
+              {t("home.startScanning")}
             </Link>
             <Link to="/generate" className="secondary-button border-white/15 bg-white/10 text-white hover:border-white/30 hover:bg-white/15 hover:text-white">
-              Create a code
+              {t("home.createCode")}
               <Icon name="arrow" />
             </Link>
           </div>
@@ -61,11 +62,11 @@ export const Home = () => {
           <div className="rotate-3 rounded-[2rem] border border-white/10 bg-white/10 p-4 backdrop-blur-xl">
             <div className="rounded-3xl bg-white p-7 text-slate-900 shadow-2xl">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">Ready to share</span>
+                <span className="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">{t("home.readyToShare")}</span>
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_0_5px_rgba(52,211,153,0.14)]" />
               </div>
               <div className="mx-auto my-8 flex aspect-square w-48 items-center justify-center rounded-3xl bg-slate-950 p-7">
-                <img src={logoUrl} alt="Decorative QR code" className="h-full w-full brightness-0 invert" />
+                <img src={logoUrl} alt={t("home.decorativeQrAlt")} className="h-full w-full brightness-0 invert" />
               </div>
               <div className="h-2.5 w-2/3 rounded-full bg-slate-100" />
               <div className="mt-2 h-2.5 w-1/2 rounded-full bg-slate-100" />
@@ -75,7 +76,7 @@ export const Home = () => {
       </section>
 {/* 
       <section className="mt-8 grid gap-4 md:grid-cols-2">
-        {actionCards.map((card) => (
+        {_actionCards.map((card) => (
           <Link
             key={card.to}
             to={card.to}
@@ -86,10 +87,10 @@ export const Home = () => {
             </span>
             <span className="min-w-0">
               <span className="flex items-center justify-between gap-3">
-                <span className="text-lg font-extrabold tracking-tight text-slate-950">{card.title}</span>
+                <span className="text-lg font-extrabold tracking-tight text-slate-950">{t(card.titleKey)}</span>
                 <Icon name="arrow" className="h-5 w-5 shrink-0 text-slate-300 transition group-hover:translate-x-1 group-hover:text-indigo-600" />
               </span>
-              <span className="mt-2 block text-sm leading-6 text-slate-500">{card.text}</span>
+              <span className="mt-2 block text-sm leading-6 text-slate-500">{t(card.textKey)}</span>
             </span>
           </Link>
         ))}
@@ -101,13 +102,13 @@ export const Home = () => {
             <Icon name="shield" />
           </span>
           <div>
-            <p className="text-sm font-bold">Private by design</p>
-            <p className="mt-0.5 text-xs leading-5 text-emerald-700">Your history is stored only in this browser.</p>
+            <p className="text-sm font-bold">{t("home.privateTitle")}</p>
+            <p className="mt-0.5 text-xs leading-5 text-emerald-700">{t("home.privateText")}</p>
           </div>
         </div>
         {(generatedCount > 0 || scannedCount > 0) && (
           <Link to="/history" className="text-center text-sm font-semibold text-indigo-700 hover:text-indigo-900">
-            {generatedCount} created · {scannedCount} scanned →
+            {t("home.activityCount", { generated: generatedCount, scanned: scannedCount })}
           </Link>
         )}
       </section>

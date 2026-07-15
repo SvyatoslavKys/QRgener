@@ -6,6 +6,7 @@ import { Home } from "./Home";
 import { History } from "./History";
 import { ScanHistory } from "./ScanHistory";
 import { GenerateHistory } from "./GenerateHistory";
+import { t } from "./i18n";
 
 const Layout = () => {
   return (
@@ -23,7 +24,7 @@ const Layout = () => {
         </Routes>
       </main>
       <footer className="hidden border-t border-slate-200/70 bg-white/50 py-6 text-center text-sm text-slate-500 md:block">
-        QR Studio · Your codes stay on this device
+        {t("footer")}
       </footer>
     </div>
   );
